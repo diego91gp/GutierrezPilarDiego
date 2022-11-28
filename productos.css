@@ -1,0 +1,237 @@
+/* Importo reset y las fuentes de google*/
+
+@import url("./reset.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* Le aplico a body ancho minimo de 435 px*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-width: 435px;
+}
+
+/*Header flex para centrar el texto
+con un borde por abajo */
+
+header {
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    background-color: orange;
+    border-bottom: solid black 5px;
+}
+
+h1 {
+    color: white;
+    font-size: 2em;
+}
+
+/*aplico a todas lasimagenes un ancho y in efecto sombreado y redondeado */
+img {
+    box-shadow: 10px 9px 4px -3px rgba(0, 0, 0, 0.75);
+    width: 150px;
+    border-radius: 5px;
+}
+
+/*main cubre todo el body, qu eno sea header aplicamos un margen para separarlo un poco del header y  ponemos flex y el color del background */
+main {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    background-color: gainsboro;
+    display: flex;
+}
+
+/* a la seccion de la izquierda le asignamos un ahco del 60% de main y a la seccion de la derecha el 40%*/
+
+.productos {
+    width: 60%;
+    margin-bottom: 50px;
+}
+
+/* A cada elemento de la seccion de la izquierda le añadimos un poco de padding para que quede mas agradable a la vista  y un borde por abajo naranja para marcar la separacion entre cada elemento con un gap de 15px para separalos un poco entre ellos y un grow para que crezcan y decrezcan igual*/
+
+.producto {
+
+    border-bottom: solid orange 2px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+/* sobreescribimos el ancho de la imagen para que ocupe el 100% de su contenedor */
+
+.producto img {
+
+    width: 100%;
+}
+
+/* a la seccion derecha de la imagen le asignamos el encho del 100% de su contenedor le asignamos flex y direccion columna para que ponga los elementos unos debajo de otros con un poco de gap para la separacion */
+
+.producto div:nth-child(2) {
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+/* poemos al h2 de cada elemento un borde doteado por abajo para separar que ocupe el 100% del espacio*/
+
+.producto div:nth-child(2) h2 {
+    color: orange;
+    font-size: 1.5em;
+    width: 100%;
+    border-bottom: dotted gray;
+}
+
+/* Al contenedor de los botones le asignamos spacearound para separarlos un poco y un poco mas de gap  */
+.producto div:nth-child(2) div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+}
+
+/* damos estilo a todos los botones */
+
+button {
+
+    width: 80px;
+    height: 30px;
+    background-color: orange;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* al apretar uno de los botones desaparecen y en su lugar aparece un span con estas propiedades*/
+
+.spanDespues {
+    text-align: center;
+    font-size: 1.5em;
+    width: 100%;
+    user-select: none;
+    background-color: black;
+    color: white;
+}
+
+/* la primera letra de todos los h2 y todos los p en mayusculas*/
+
+h2::first-letter,
+p::first-letter {
+    text-transform: uppercase;
+}
+
+/* la parte de la derecha le aplico heig del 100% para que funcione el position sticki , al hacer scroll y llegar a ese punto se queda pegado a la ventana widht 40 porque la otra ventana tien 60%*/
+
+.grupos {
+    color: white;
+    display: flex;
+    position: sticky;
+    height: 100%;
+    top: 50px;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+    padding: 10px;
+}
+
+/* estilo al titulo de los grupos*/
+.grupos h2 {
+    padding-left: 5px;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    border-bottom: solid white;
+}
+
+/* pongo shadow a los elementos grupa a y b*/
+
+.grupos div {
+    box-shadow: 0px 1px 5px 4px rgba(0, 0, 0, 0.41);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: orange;
+
+}
+
+/* sobreescribo el shadow porque tambien me lo cogia para los demas divs dentro de grupos div*/
+
+.grupos div div {
+    box-shadow: none;
+}
+
+/* estilos al contenedor grupa a y b con wrap para que si no da el ancho pase debajo con bastante gap para que salte antes
+*/
+
+#prodA,
+#prodB {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-around;
+    text-align: center;
+
+}
+
+/*creo mediaqueries a partir de 700 px */
+@media (max-width: 700px) {
+
+    /* le cambio 50 50 los tamaños de las secciones*/
+    .productos {
+        width: 50%;
+    }
+
+    .grupos {
+        width: 50%;
+    }
+
+    /*cambio la disoposicion de producto a column */
+    .producto {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* reducimos la fuente de algunos elementos y los centramos*/
+    h2 {
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        font-size: 1.1em;
+    }
+
+    .productos p {
+        text-align: center;
+    }
+
+    .grupos p {
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    /*reducimos mas la imagen de la derecha y la quitamos el boxshadow */
+    .grupos img {
+        width: 100px;
+        box-shadow: none;
+
+    }
+
+
+}
